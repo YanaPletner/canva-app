@@ -32,18 +32,18 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-//Connecting to MongoDB
-const dbConnect = async () => {
-    try {
-        if (process.env.NODE_ENV === 'local') {
-            await mongoose.connect(process.env.LOCAL_DB_URI)
-            console.log('Local Database Is Connected...')
-        }
-    } catch (error) {
-        console.log('Database Connection Failed.')
-    }
-}
-dbConnect()
+// //Connecting to MongoDB
+// const dbConnect = async () => {
+//     try {
+//         if (process.env.NODE_ENV === 'local') {
+//             await mongoose.connect(process.env.LOCAL_DB_URI)
+//             console.log('Local Database Is Connected...')
+//         }
+//     } catch (error) {
+//         console.log('Database Connection Failed.')
+//     }
+// }
+// dbConnect()
 
 //Starting the Server
 const PORT = process.env.PORT || 5000
