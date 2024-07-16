@@ -33,31 +33,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //Connecting to MongoDB
-// const dbConnect = async () => {
-//     try {
-//         if (process.env.NODE_ENV === 'local') {
-//             await mongoose.connect(process.env.LOCAL_DB_URI)
-//             console.log('Local Database Is Connected...')
-//         } else {
-//             await mongoose.connect(process.env.MONGODB_URI)
-//             console.log('Production Database Is Connected...')
-//         }
-//     } catch (error) {
-//         console.log('Database Connection Failed.')
-//     }
-// }
-
 const dbConnect = async () => {
     try {
-        const dbURI = process.env.NODE_ENV === 'local' ? process.env.LOCAL_DB_URI : process.env.MONGODB_URI;
-        await mongoose.connect(dbURI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log(`Database connected: ${dbURI}`);
+        if (process.env.NODE_ENV === 'local') {
+            await mongoose.connect(process.env.LOCAL_DB_URI)
+            console.log('Local Database Is Connected...')
+        }
     } catch (error) {
-        console.error('Database connection failed:', error.message);
-        process.exit(1); // Exit with failure
+        console.log('Database Connection Failed.')
     }
 }
 dbConnect()
