@@ -26,7 +26,6 @@ const corsOptions = {
 }
 // App Configuration
 app.use(express.static('public'))
-app.use(cookieParser()) // for res.cookies
 app.use(express.json()) // for req.body
 app.use(cors(corsOptions))
 
